@@ -123,5 +123,37 @@ body {
     display: flex;
 }
 
-/* audio */
+/* location */
+
+.location-block {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    max-width: 350px;
+    left: 0;
+    right: 0;
+    bottom: 40%;
+    margin: 0 auto;
+
+    background-color: #fff;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s ease-in-out;
+
+    box-shadow: 10px 10px 14px -7px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 10px 10px 14px -7px rgba(0,0,0,0.55);
+    -moz-box-shadow: 10px 10px 14px -7px rgba(0,0,0,0.55);
+}
+
+.location-block__header, .location-block__main {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
