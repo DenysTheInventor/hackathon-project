@@ -77,3 +77,45 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+.timer-form__hours-input {
+    font-size: 2rem;
+    line-height: 2rem;
+
+    background: var(--color-white);
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.timer-form__submit-button {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    background: none;
+    
+}
+
+.timer-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+}
+
+.timer-form__input-label {
+    display: flex;
+    font-size: 2rem;
+    line-height: 2.5rem;
+
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+}
