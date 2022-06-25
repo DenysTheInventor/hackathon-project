@@ -92,3 +92,33 @@ body {
     background-color: rgb(243, 238, 232);
     padding: 10px;
 }
+
+/* System message */
+
+.system-message {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px 0;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    margin: 0 auto;
+
+    background-color: #fff;
+    border-radius: 2px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s ease-in-out;
+
+    box-shadow: 10px 10px 14px -7px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 10px 10px 14px -7px rgba(0,0,0,0.55);
+    -moz-box-shadow: 10px 10px 14px -7px rgba(0,0,0,0.55);
+}
+
+.system-message__show {
+    display: flex;
+}
