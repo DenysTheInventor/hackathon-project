@@ -220,3 +220,81 @@ body {
   display: none;
 }
 /* == /clicks.module styles == */
+
+.timer-form__hours-input {
+    font-size: 2.2rem;
+    width: 70px;
+    height: 70px;
+
+    background: var(--color-white);
+    color: var(--color-grey);
+    border: none;
+    border-radius: 5px;
+
+    padding: 15px 2px 15px 15px;
+}
+
+.timer-form {
+    width: 100%;
+    height: 200px;
+}
+
+.timer-form__header, .timer-form__main, .timer-form__footer {
+  width: 100%;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-form__main {
+  padding: 0;
+}
+
+.timer-form__finish-button, .timer-form__submit-button {
+    width: 180px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-white);
+    color: var(--color-grey);
+    margin: 0 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.timer-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 45%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+  padding: 10px;
+  background: linear-gradient(to bottom right, rgb(34 211 238), rgb(168 85 247));
+  border-radius: 22px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-grey);
+  border-radius: inherit;
+  height: 100%;
+
+  font-size: 100px;
+
+  color: var(--color-white);
+}
+
+.timer-form__input-label {
+  font-size: 20px;
+}
+
+.timer-divider {
+  margin: 0 10px;
+}
