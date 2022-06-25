@@ -19,6 +19,6 @@ export class MessageModule extends Module {
 
         setTimeout(() => {
             this.#messageBlock.classList.remove('system-message__show')
-        }, 1500);
+        }, 1000);
     }
 }
