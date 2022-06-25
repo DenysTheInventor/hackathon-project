@@ -1,10 +1,12 @@
 import {Menu} from './core/menu'
 import { Module } from './core/module'
+import { MessageModule } from './modules/message.module'
 
 export class ContextMenu extends Menu {
     #menu
     #workingArea
     #menuOpenedClass
+    #systemMessage
 
     constructor(selector) {
         super() 
@@ -12,6 +14,7 @@ export class ContextMenu extends Menu {
         this.#menu = document.querySelector(selector)
         this.#workingArea = document.querySelector('.app-container')
         this.#menuOpenedClass = 'menu-opened'
+        this.#systemMessage = new MessageModule('message-module', 'message')
     }
 
     add(module) {
@@ -22,6 +25,7 @@ export class ContextMenu extends Menu {
 
             newItem.addEventListener('click', () => {
                 module.trigger()
+                this.#systemMessage.trigger(`Module ${module.text} worked successfully`)
             })
         }
     }
