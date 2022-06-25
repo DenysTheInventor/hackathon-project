@@ -157,3 +157,9 @@ body {
     align-items: center;
 }
 
+#canv {
+    position: absolute;
+    left: 40px;
+     top: 40px;
+     z-index: 1; 
+}
