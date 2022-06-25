@@ -7,6 +7,7 @@ export class ContextMenu extends Menu {
     #workingArea
     #menuOpenedClass
     #systemMessage
+    #modules
 
     constructor(selector) {
         super(selector) 
@@ -15,19 +16,23 @@ export class ContextMenu extends Menu {
         this.#workingArea = document.querySelector('.app-container')
         this.#menuOpenedClass = 'menu-opened'
         this.#systemMessage = new MessageModule('message-module', 'message')
+        this.#modules = []
+
+        this.#menu.addEventListener('click', (event) => {
+            const { target } = event
+            const selectedModule = target.dataset.type
+
+            const module = this.#modules.find((module) => module.type === selectedModule)
+            module.trigger()
+            this.#systemMessage.trigger(`Module ${module.text} worked successfully`)
+            this.close()
+        })
     }
 
     add(module) {
         if(module instanceof Module) {
+            this.#modules.push(module)
             this.#menu.innerHTML += module.toHTML()
-
-            const newItem = this.#menu.querySelector(`[data-type="${module.type}"]`)
-
-            newItem.addEventListener('click', () => {
-                module.trigger()
-                this.#systemMessage.trigger(`Module ${module.text} worked successfully`)
-                this.close()
-            })
         }
     }
 
