@@ -9,9 +9,9 @@ export class ContextMenu extends Menu {
     #systemMessage
 
     constructor(selector) {
-        super() 
+        super(selector) 
 
-        this.#menu = document.querySelector(selector)
+        this.#menu = this.el
         this.#workingArea = document.querySelector('.app-container')
         this.#menuOpenedClass = 'menu-opened'
         this.#systemMessage = new MessageModule('message-module', 'message')
@@ -26,6 +26,7 @@ export class ContextMenu extends Menu {
             newItem.addEventListener('click', () => {
                 module.trigger()
                 this.#systemMessage.trigger(`Module ${module.text} worked successfully`)
+                this.close()
             })
         }
     }
@@ -48,7 +49,6 @@ export class ContextMenu extends Menu {
     init() {
         this.#workingArea.addEventListener('contextmenu', (event) => {
             event.preventDefault()
-            console.log(event.clientY, event.clientX)
             this.setMenuCoordinates(event.clientY, event.clientX)
             this.open()
         })
