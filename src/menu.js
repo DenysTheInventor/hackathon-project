@@ -1,9 +1,8 @@
 import {Menu} from './core/menu'
-import { BackgroundModule } from './modules/background.module'
+import { Module } from './core/module'
 
 export class ContextMenu extends Menu {
     #menu
-    #modules
     #workingArea
     #menuOpenedClass
 
@@ -13,23 +12,18 @@ export class ContextMenu extends Menu {
         this.#menu = document.querySelector(selector)
         this.#workingArea = document.querySelector('.app-container')
         this.#menuOpenedClass = 'menu-opened'
-
-        this.#modules = [BackgroundModule]
     }
 
-    add(ModuleName) {
-        const newModule = new ModuleName 
-        const newItem = newModule.toHTML()
+    add(module) {
+        if(module instanceof Module) {
+            this.#menu.innerHTML += module.toHTML()
 
-        this.#menu.innerHTML += newItem
+            const newItem = this.#menu.querySelector(`[data-type="${module.type}"]`)
 
-        this.#menu.querySelectorAll('li').forEach(item => {
-            if(item.dataset.type = newModule.type) {
-                item.addEventListener('click', () => {
-                    newModule.trigger()
-                })
-            }
-        })
+            newItem.addEventListener('click', () => {
+                module.trigger()
+            })
+        }
     }
 
     setMenuCoordinates(top, left) {
@@ -47,13 +41,10 @@ export class ContextMenu extends Menu {
         }
     }
 
-    work() {
-        this.#modules.forEach(module => {
-            this.add(module)
-        }) 
-
+    init() {
         this.#workingArea.addEventListener('contextmenu', (event) => {
             event.preventDefault()
+            console.log(event.clientY, event.clientX)
             this.setMenuCoordinates(event.clientY, event.clientX)
             this.open()
         })
