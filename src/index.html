@@ -1,27 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Context Menu App</title>
-</head>
-<body>
-
-<div class="wrapper">
-  <header class="header">
-    <span class="header-text">Hackaton project #1</span>
-    <div class="header-icon"></div>
-  </header>
-  <div class="app">
-    <div class="app-container">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Context Menu App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <span class="header-text">Hackaton project #1</span>
+        <div class="header-icon"></div>
+      </header>
+      <div class="app">
+        <div class="app-container">
+          <div class="clicks-wrapper">
+            <h3 class="time-title">Time: <span class="js-time">00:00</span></h3>
+            <div class="clicks-board js-clicks-board">
+              <button type="button" class="btn-start">start</button>
+              <p class="clicks-count hide">0</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<ul class="menu" id="menu"></ul>
-
-</body>
+    <ul class="menu" id="menu"></ul>
+  </body>
 </html>
