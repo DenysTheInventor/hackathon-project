@@ -7,6 +7,8 @@ export class TimerModule extends Module {
 
     constructor(type, text) {
         super(type, text)
+        this.form = document.createElement('form')
+        this.form.className = 'timer-form'
     }
 
     trigger() {
@@ -15,8 +17,8 @@ export class TimerModule extends Module {
     }
 
     toHTML(){
-        const form = document.createElement('form')
-        form.className = 'timer-form'
+        // const form = document.createElement('form')
+        // form.className = 'timer-form'
 
         const timerLabel = document.createElement('label')
         timerLabel.className = 'timer-form__input-label'
@@ -44,7 +46,7 @@ export class TimerModule extends Module {
         secondsImputLabel.type = 'number'
         secondsImputLabel.max = '60'
         secondsImputLabel.min = '0'
-        secondsImputLabel.required = ''
+        secondsImputLabel.required = 'number'
 
         const timerFormButton = document.createElement('button')
         timerFormButton.className = 'timer-form__submit-button'
@@ -53,9 +55,9 @@ export class TimerModule extends Module {
 
         timerLabel.append(hoursImputLabel, minutesImputLabel, secondsImputLabel, timerFormButton)
 
-        form.append(timerLabel)
+        this.form.append(timerLabel)
 
-        form.addEventListener('submit', (event) => {
+        this.form.addEventListener('submit', (event) => {
             event.preventDefault()
 
             let amountOfHours = Number((event.target.hours.value))
@@ -77,7 +79,7 @@ export class TimerModule extends Module {
                     clearInterval(timer);
                     timerLabel.textContent = 'Таймер завершил свою работу'
                     setTimeout(() => {
-                        form.remove()
+                        this.form.remove()
                     },2000)
                 } else {
                     timerLabel.textContent = `Таймер сработает через ${amountOfHours} ч. ${amountOfMinutes} мин. ${amountOfSeconds} сек.`;
@@ -85,6 +87,6 @@ export class TimerModule extends Module {
                 --amountOfSeconds;
             }, 1000)
         })
-        return form
+        return this.form
     }
 }
