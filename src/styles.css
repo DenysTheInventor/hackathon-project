@@ -80,10 +80,10 @@ body {
 
 /* == clicks.module styles == */
 .clicks-wrapper {
-    display: flex;
-    flex-direction: column;
-      align-items: center;
-      justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .clicks-board {
@@ -103,7 +103,7 @@ body {
 .time-title,
 .clicks-count {
   display: block;
-  padding: 4px 0px; 
+  padding: 4px 0px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1.8px;
@@ -112,8 +112,8 @@ body {
 .time-title {
   margin: 10px 0px;
 }
-  .clicks-count {
-      color: white;
+.clicks-count {
+  color: white;
 }
 
 .clicks-point {

@@ -1,21 +1,50 @@
 import { Module } from "../core/module";
 import { generateColor } from "../utils";
 
-const refs = {
-  board: document.querySelector(".js-clicks-board"),
-  btnStart: document.querySelector(".btn-start"),
-  count: document.querySelector(".clicks-count"),
-  time: document.querySelector(".js-time"),
-};
+//временная кнопка - удалить, когда будет привязка к меню
+const tmpBtn = document.querySelector(".tmp-btn");
+
+const appContainerRef = document.querySelector(".app-container");
 
 export class ClicksModule extends Module {
-  
+  #clicksWrapper;
+  #boardRef;
+  #btnStartRef;
+  #countRef;
+  #timeRef;
+
   constructor(type, text) {
     super(type, text);
     this.intervalId = null;
     this.isActive = false;
     this.time = 3;
     this.score = 0;
+  }
+
+  trigger() {
+    this.createClicksModuleMarkup();
+
+    this.#clicksWrapper = document.querySelector(".clicks-wrapper");
+    this.#btnStartRef = document.querySelector(".btn-start");
+    this.#countRef = document.querySelector(".clicks-count");
+    this.#boardRef = document.querySelector(".js-clicks-board");
+    this.#timeRef = document.querySelector(".js-time");
+
+    this.#btnStartRef.addEventListener("click", () => {
+      this.start();
+      this.#btnStartRef.classList.add("hide");
+      this.#countRef.classList.remove("hide");
+      this.#boardRef.addEventListener("click", (e) => {
+        if (!this.isActive) {
+          return;
+        } else {
+          if (e.target === e.currentTarget) {
+            this.increaseCount();
+            this.createPoint(e);
+          }
+        }
+      });
+    });
   }
 
   start() {
@@ -32,22 +61,35 @@ export class ClicksModule extends Module {
         }
       }, 1000);
       this.setTime(this.time);
-      this.score += 1;
     }
   }
 
   stop() {
     clearInterval(this.intervalId);
     this.isActive = false;
+    this.#countRef.textContent = `Ваш счет: ${this.score}`;
+    setTimeout(() => {
+      this.#clicksWrapper.remove();
+    }, 2000);
   }
 
   setTime(value) {
-    refs.time.innerHTML = `00:0${value}`;
+    this.#timeRef.textContent = `00:0${value}`;
   }
 
-  increaseCount(event) {
-    this.setCount(this.score);
+  increaseCount() {
     this.score += 1;
+    this.setCount(this.score);
+  }
+
+  createClicksModuleMarkup() {
+    const markup = `<div class="clicks-wrapper">
+            <h3 class="time-title">Time: <span class="js-time">00:00</span></h3>
+            <div class="clicks-board js-clicks-board">
+              <button type="button" class="btn-start">start</button>
+              <p class="clicks-count hide">0</p>
+            </div>`;
+    appContainerRef.insertAdjacentHTML("beforeend", markup);
   }
 
   createPoint(event) {
@@ -60,29 +102,14 @@ export class ClicksModule extends Module {
     pointRef.style.top = `${event.layerY}px`;
     pointRef.style.left = `${event.layerX}px`;
 
-    refs.board.append(pointRef);
+    this.#boardRef.append(pointRef);
   }
 
   setCount(value) {
-    refs.count.innerHTML = `${value}`;
+    this.#countRef.textContent = `${value}`;
   }
 }
 
 const clickTimer = new ClicksModule(1, 1);
 
-refs.btnStart.addEventListener("click", () => {
-  clickTimer.start();
-  refs.btnStart.classList.add("hide");
-  refs.count.classList.remove("hide");
-
-  refs.board.addEventListener("click", (e) => {
-    if (!clickTimer.isActive) {
-      return;
-    } else {
-      if (e.target === e.currentTarget) {
-        clickTimer.increaseCount(e);
-        clickTimer.createPoint(e);
-      }
-    }
-  });
-});
+tmpBtn.addEventListener("click", clickTimer.trigger.bind(clickTimer));
