@@ -8,6 +8,7 @@
 
 :root {
     --color-white: #fff;
+    --color-grey: #343434;
 }
 
 body {
@@ -32,7 +33,7 @@ body {
     height: 100px;
     padding: 15px;
 
-    background-color: #343434;
+    background-color: var(--color-grey);
 
     display: flex;
     justify-content: space-between;
@@ -61,7 +62,7 @@ body {
     list-style: none;
 }
 
-.menu.open {
+.menu-opened {
     display: block;
 }
 
@@ -75,5 +76,19 @@ body {
 }
 
 .menu .menu-item:hover {
-    background: #343434;
+    background-color: var(--color-grey);
+}
+
+/* working area */
+
+.app {
+    width: 100%;
+    height: calc(100vh - 100px);
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(243, 238, 232);
+    padding: 10px;
 }
