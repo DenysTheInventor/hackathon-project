@@ -16,10 +16,10 @@
 + custom context menu
 
 ## Description
-Geolocation - api.opencagedata + navigator
-Logging - localStorage
-Get user - randomuser.me api + custom select
-Random photo - unsplash api
-Simple paint - a lot of pain + screenshoter
++ Geolocation - api.opencagedata + navigator
++ Logging - localStorage
++ Get user - randomuser.me api + custom select
++ Random photo - unsplash api
++ Simple paint - a lot of pain + screenshoter
 
 and a lot of features inside application
