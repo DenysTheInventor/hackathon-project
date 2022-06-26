@@ -125,7 +125,8 @@ export class TimerModule extends Module {
 
     finishWorking() {
         const finishFormButton = document.querySelector('.timer-form__finish-button')
-        finishFormButton.addEventListener('click', () => {
+        finishFormButton.addEventListener('click', (e) => {
+            e.preventDefault()
             this.removeTimer()
         })
     }
