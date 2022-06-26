@@ -7,6 +7,7 @@ import { GeoLocation } from './modules/location.module'
 import { ClicksModule } from './modules/clicks.module'
 import { TimerModule } from './modules/timer.module'
 import { RandomFigures } from './modules/figures.module'
+import { LogModule } from './modules/log.module'
 
 const contextMenu = new ContextMenu('.menu')
 
@@ -17,6 +18,7 @@ contextMenu.add(new GeoLocation('location-module', 'Geolocation'))
 contextMenu.add(new ClicksModule('count-module', 'Count clicks'))
 contextMenu.add(new TimerModule('timer-module', 'Set timer'))
 contextMenu.add(new RandomFigures('figure-module', 'Random figure'))
+contextMenu.add(new LogModule('log-module', 'Show logs'))
 
 // init app
 contextMenu.init()
