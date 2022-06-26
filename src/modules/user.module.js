@@ -41,6 +41,15 @@ export class UserModule extends Module {
         this.#userIcon.append(userIcon)
     }
 
+    handleClick() {
+        document.body.addEventListener('click', (event) => {
+            const { target } = event
+            if(target.classList.contains('gender-result__close')) {
+                document.querySelector('.gender-modal').remove()
+            }
+        })
+    }
+
     setForm() {
         const formWrapper = document.querySelector('.gender-results__list')
               formWrapper.insertAdjacentHTML('afterbegin', `
@@ -92,6 +101,7 @@ export class UserModule extends Module {
 
     specifyGender() {
         this.#modal.createModal('gender', 'Specify your gender:')
+        this.handleClick()
         this.setForm()
     }
 
