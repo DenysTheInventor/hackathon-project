@@ -69,9 +69,15 @@ export class TimerModule extends Module {
         document.querySelector('.timer').innerHTML = content
     }
 
+    deleteSubmitFormButton() {
+        const submitFormButton = document.querySelector('.timer-form__submit-button')
+        submitFormButton.remove()
+    }
+
     timer(hours, minutes, seconds) {
         this.addInnerContent(this.#counters)
         this.finishWorking()
+        this.deleteSubmitFormButton()
 
         const hoursBlock = document.querySelector('.timer-hours')
         const minutesBlock = document.querySelector('.timer-minutes')
@@ -82,7 +88,7 @@ export class TimerModule extends Module {
                 minutes = minutes - 1
                 seconds = 59
             }
-            if (minutes < 0 && hours > 0) {
+            if (minutes <= 0 && hours > 0) {
                 hours = hours - 1
                 minutes = 59
             }
