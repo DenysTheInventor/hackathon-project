@@ -53,6 +53,19 @@ export class ContextMenu extends Menu {
     setMenuCoordinates(top, left) {
         this.#menu.style.top = `${top}px`
         this.#menu.style.left = `${left}px`
+
+        const menuWidth = this.#menu.offsetWidth
+        const menuHeight = this.#menu.offsetHeight
+
+        const windowWidth = window.innerWidth
+        const windowHeight = window.innerHeight
+
+        if ( (windowWidth - left) < menuWidth) {
+            this.#menu.style.left = windowWidth - menuWidth + 'px'
+        }
+        if ( (windowHeight - top) < menuHeight) {
+            this.#menu.style.top = windowHeight - menuHeight + 'px'
+        }
     }
 
     open() {
@@ -68,8 +81,8 @@ export class ContextMenu extends Menu {
     init() {
         this.#workingArea.addEventListener('contextmenu', (event) => {
             event.preventDefault()
-            this.setMenuCoordinates(event.clientY, event.clientX)
             this.open()
+            this.setMenuCoordinates(event.clientY, event.clientX)
         })
         triggerLog(this.#logMessage)        
     }
