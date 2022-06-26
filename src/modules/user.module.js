@@ -80,6 +80,12 @@ export class UserModule extends Module {
                 </div>
               `)
 
+        const genderList = document.querySelector('.list')
+
+        genderList.addEventListener('click', () => {
+            document.querySelector('.custom-select').open = false
+        })
+        
         const genderForm = formWrapper.querySelector('form')
 
         genderForm.addEventListener('submit', (e) => {
