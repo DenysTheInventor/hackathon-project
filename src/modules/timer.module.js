@@ -1,12 +1,8 @@
-//Пользователь задает время, создается маленький таймер (например в виде небольшого блока в углу сайта).
-//По истечении времени таймер выводит сообщение о завершении и удаляется.
-
 import {Module} from '../core/module'
 import { addZero } from '../utils'
 import { MessageModule } from './message.module'
 
 export class TimerModule extends Module {
-    #timerContainer
     #workingArea
     #timerWrapper
     #timerIntervalID
@@ -17,8 +13,6 @@ export class TimerModule extends Module {
     constructor(type, text) {
         super(type, text)
 
-        this.#timerContainer = document.createElement('div')
-        this.#timerContainer.className = 'timer-container'
         this.#timerWrapper = document.createElement('div')
         this.#timerWrapper.className = 'timer-wrapper'
         this.#workingArea = document.querySelector('.app-container')
@@ -27,11 +21,17 @@ export class TimerModule extends Module {
         this.#message = new MessageModule('message-module', 'message')
 
         this.#counters = `
-            <div class="timer-hours"></div>
-            <p class="timer-divider">:</p>
-            <div class="timer-minutes"></div>
-            <p class="timer-divider">:</p>
-            <div class="timer-seconds"></div>
+            <div class="timer-form__main">
+                <div class="timer-hours"></div>
+                <p class="timer-divider">:</p>
+                <div class="timer-minutes"></div>
+                <p class="timer-divider">:</p>
+                <div class="timer-seconds"></div>  
+            </div>
+            <div class="timer-form__footer">
+                <button class="timer-form__submit-button" type="submit" disabled>Запустить таймер</button>
+                <button class="timer-form__finish-button">Завершить</button>
+            </div> 
         `
         this.#inputs = `
             <form class="timer-form">
@@ -57,12 +57,22 @@ export class TimerModule extends Module {
     }
 
     trigger() {
-        const timerToHTML = this.run()
-        this.#workingArea.append(timerToHTML)
+        if (!document.querySelector('.timer')) {
+            this.renderTimer()
+            this.addInnerContent(this.#inputs)        
+            this.finishWorking()
+            this.handleForm() 
+        }
+    }
+
+    addInnerContent(content) {
+        document.querySelector('.timer').innerHTML = content
+        console.log('step2 if it is after step 1')
     }
 
     timer(hours, minutes, seconds) {
-        document.querySelector('.timer').innerHTML = this.#counters
+        this.addInnerContent(this.#counters)
+        this.finishWorking()
 
         const hoursBlock = document.querySelector('.timer-hours')
         const minutesBlock = document.querySelector('.timer-minutes')
@@ -78,10 +88,7 @@ export class TimerModule extends Module {
                 minutes = 59
             }
             if (seconds <= 0 && minutes <= 0 && hours <= 0) {
-                this.#message.trigger('Таймер завершил свою работу')
-                setTimeout(() => {
-                    this.#workingArea.innerHTML = ''
-                },2000)
+                this.removeTimer()
             } else {
                 hoursBlock.textContent = addZero(hours)
                 minutesBlock.textContent = addZero(minutes)
@@ -96,26 +103,34 @@ export class TimerModule extends Module {
         
         form.addEventListener('submit', (event) => {
             event.preventDefault()
+            const { target } = event
 
-            let amountOfHours = Number((event.target.hours.value))
-            let amountOfMinutes = Number((event.target.minutes.value))
-            let amountOfSeconds = Number((event.target.seconds.value))
+            let amountOfHours = Number((target.hours.value))
+            let amountOfMinutes = Number((target.minutes.value))
+            let amountOfSeconds = Number((target.seconds.value))
 
             document.querySelector('.timer').innerHTML = ''
 
-            this.timer(amountOfHours, amountOfMinutes, amountOfSeconds, this.#timerContainer)
+            this.timer(amountOfHours, amountOfMinutes, amountOfSeconds)
         })
+        console.log('step4')
+    }
+
+    removeTimer() {
+        clearInterval(this.#timerIntervalID)
+        this.#message.trigger('Module Timer stopped')
+        setTimeout(() => {
+            this.#timerWrapper.innerHTML = ''
+            this.#timerWrapper.remove()
+        },500)
     }
 
     finishWorking() {
         const finishFormButton = document.querySelector('.timer-form__finish-button')
         finishFormButton.addEventListener('click', () => {
-            clearInterval(this.#timerIntervalID)
-            this.#message.trigger('Таймер завершил свою работу')
-            setTimeout(() => {
-                this.#workingArea.innerHTML = ''
-            },1000)
+            this.removeTimer()
         })
+        console.log('step3')
     }
 
     renderTimer() {
@@ -124,17 +139,7 @@ export class TimerModule extends Module {
                 
             </div>
         `)
-
         this.#workingArea.append(this.#timerWrapper)
-    }
-
-    run() {
-        this.renderTimer()
-        document.querySelector('.timer').innerHTML = this.#inputs
-        
-        this.handleForm()
-        this.finishWorking()
-
-        return this.#timerContainer
+        console.log('step1')
     }
 }
