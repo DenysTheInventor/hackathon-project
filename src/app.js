@@ -9,6 +9,7 @@ import { TimerModule } from './modules/timer.module'
 import { RandomFigures } from './modules/figures.module'
 import { LogModule } from './modules/log.module'
 import { UserModule } from './modules/user.module'
+import { PaintModule } from './modules/paint.module'
 
 const contextMenu = new ContextMenu('.menu')
 
@@ -21,6 +22,7 @@ contextMenu.add(new TimerModule('timer-module', 'Set timer'))
 contextMenu.add(new RandomFigures('figure-module', 'Random figure'))
 contextMenu.add(new LogModule('log-module', 'Show logs'))
 contextMenu.add(new UserModule('user-module', 'Get user'))
+contextMenu.add(new PaintModule('paint-module', 'Secret module'))
 
 
 // init app

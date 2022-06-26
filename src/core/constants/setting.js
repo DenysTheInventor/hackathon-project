@@ -9,3 +9,8 @@ export const randomSounds = [
 ]
 
 export const workingArea = document.querySelector('.app-container')
+
+export const colors = [
+    'rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(223, 223, 223)', 'rgb(114, 114, 114)', 'rgb(78, 16, 16)', 'rgb(255, 0, 0)',
+    'rgb(255, 106, 0)', 'rgb(184, 123, 0)', 'rgb(248, 223, 173)', 'rgb(255, 221, 0)', 'rgb(170, 255, 0)', 'rgb(30, 182, 0)', 'rgb(57, 255, 252)', 'rgb(0, 117, 190)', 'rgb(0, 31, 110)', 'rgb(95, 0, 110)', 'rgb(231, 141, 153)', 'rgb(82, 48, 19)'    
+]

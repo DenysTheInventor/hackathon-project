@@ -19,6 +19,10 @@ body {
   padding: 2rem;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .wrapper {
   position: absolute;
   left: 0;
@@ -571,4 +575,251 @@ details label span {
 	height: 1rem;
 	border: 1px solid #727272;
 	border-radius: 3px;
+}
+
+/* PAINT */
+
+#canvas {
+  width: 85%;
+  height: calc(100% - 100px);
+
+  position: absolute;
+  z-index: 9999;
+}
+
+.screenshot {
+  position: absolute;
+  z-index: 10000;
+}
+
+.paint-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  position: relative;
+  z-index: 9000;
+}
+
+.paint-working__title {
+  width: 250px;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  font-size: 40px;
+  color: #7171f5;
+}
+
+.paint-working__area {
+  width: 85%;
+  height: 100%;
+  background-color: var(--color-white);
+}
+
+.paint-control__head {
+  width: 200px;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paint-working__erase, .paint-working__screen {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paint-working__erase i, .paint-working__screen i {
+  font-size: 40px;
+}
+
+.paint-working__erase:hover, .paint-working__screen:hover {
+  border: 1px solid rgb(104, 104, 104);
+}
+
+.paint-working__area-title {
+  font-size: 2rem;
+  color: #7171f5;
+}
+
+.paint-control__area {
+  width: 15%;
+  height: 100%;
+  padding: 15px;
+  background-color:#d3d3d3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.paint-working__area-panel {
+  width: 100%;
+  height: 100px;
+  background-color:#d3d3d3;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paint-marker {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.paint-marker__heading {
+  color: #7171f5;
+  padding: 10px;
+}
+
+.paint-marker__choose {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.paint-marker__item {
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paint-marker__item i {
+  font-size: 30px;
+}
+
+.paint-marker__item:hover {
+  background-color: #c7c7c9;
+  color: #7171f5;
+}
+
+.active {
+  background-color: #c7c7c9;
+}
+
+.paint-thick {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.paint-thick__heading {
+  color: #7171f5;
+}
+
+.paint-thick__slider-info, .paint-thick__opacity-info {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paint-thick__slider-number, .paint-thick__opacity-number {
+  width: 30%;
+  height: 40px;
+  padding: 0 0 0 20px;
+  font-size: 18px;
+}
+
+.paint-thick__slider-input, .paint-thick__opacity-input {
+  width: 100%;
+  color: #7171f5;
+  padding: 5px;
+}
+
+.paint-color__type {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  margin: 10px 0;
+}
+
+.paint-color__type-option {
+  height: 40px;
+  color: rgb(82, 48, 19);
+}
+
+.paint-color {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.paint-color__choose {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-box {
+  width: 68%;
+  height: 40px;
+  border: 1px solid rgb(138, 138, 138);
+}
+
+.color-choose {
+  width: 30%;
+  height: 40px;
+  border: 1px solid rgb(138, 138, 138);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paint-color__samples {
+  width: 100%;
+  height: 120px;
+  margin: 10px 0;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.paint-color__samples-item {
+  width: 16%;
+  height: 40px;
+}
+
+.paint-color__samples-item:hover {
+  border: 1px solid black;
+}
+
+.paint-color__add {
+  width: 100%;
+  height: 40px;
+  font-size: 30px;
+  border: 1px solid rgb(138, 138, 138);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.paint-color__add-button {
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paint-color__add-button:hover {
+  color: #7171f5;
 }
