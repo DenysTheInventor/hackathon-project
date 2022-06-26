@@ -6,6 +6,7 @@ import { SoundModule } from './modules/sound.module'
 import { GeoLocation } from './modules/location.module'
 import { ClicksModule } from './modules/clicks.module'
 import { TimerModule } from './modules/timer.module'
+import { RandomFigures } from './modules/figures.module'
 
 const contextMenu = new ContextMenu('.menu')
 
@@ -15,6 +16,7 @@ contextMenu.add(new SoundModule('sound-module', 'Play sound'))
 contextMenu.add(new GeoLocation('location-module', 'Geolocation'))
 contextMenu.add(new ClicksModule('count-module', 'Count clicks'))
 contextMenu.add(new TimerModule('timer-module', 'Set timer'))
+contextMenu.add(new RandomFigures('figure-module', 'Random figure'))
 
 // init app
 contextMenu.init()
