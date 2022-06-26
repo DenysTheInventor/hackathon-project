@@ -67,7 +67,6 @@ export class TimerModule extends Module {
 
     addInnerContent(content) {
         document.querySelector('.timer').innerHTML = content
-        console.log('step2 if it is after step 1')
     }
 
     timer(hours, minutes, seconds) {
@@ -113,7 +112,6 @@ export class TimerModule extends Module {
 
             this.timer(amountOfHours, amountOfMinutes, amountOfSeconds)
         })
-        console.log('step4')
     }
 
     removeTimer() {
@@ -130,7 +128,6 @@ export class TimerModule extends Module {
         finishFormButton.addEventListener('click', () => {
             this.removeTimer()
         })
-        console.log('step3')
     }
 
     renderTimer() {
@@ -140,6 +137,5 @@ export class TimerModule extends Module {
             </div>
         `)
         this.#workingArea.append(this.#timerWrapper)
-        console.log('step1')
     }
 }

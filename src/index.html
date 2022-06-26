@@ -5,6 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/6776c2db7e.js" crossorigin="anonymous"></script>
   <title>Context Menu App</title>
 </head>
 <body> 
@@ -12,8 +13,12 @@
 <div class="wrapper">
   <header class="header">
     <span class="header-text">Hackaton project #1</span>
-    
-    <div class="header-icon"></div>
+    <div class="header-control">
+      <div class="header-control__log">
+        <i class="header-control__log-button fa-solid fa-message"></i>
+      </div>
+      <div class="header-control__icon"></div>
+    </div>
   </header>
   <div class="app">
     <div class="app-container">
@@ -25,7 +30,6 @@
 <ul class="menu" id="menu"></ul>
 
 <p class="system-message">System message</p>
-
 
 </body>
 </html>

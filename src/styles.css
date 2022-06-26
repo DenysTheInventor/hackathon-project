@@ -43,12 +43,34 @@ body {
   color: var(--color-white);
 }
 
-.header-icon {
+.header-control {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-control__icon {
   width: 60px;
   height: 60px;
   background-color: var(--color-white);
   border-radius: 50%;
 }
+
+.header-control i {
+  position: relative;
+  font-size: 50px;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.header-control__area-log {
+  width: 200px;
+  height: 500px;
+  background-color: var(--color-white);
+  list-style-type: none;
+}
+
 
 .menu {
   position: fixed;
@@ -298,4 +320,82 @@ body {
 
 .timer-divider {
   margin: 0 10px;
+}
+
+/* Logging messages */
+
+.log-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-results {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 10px;
+  height: 300px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  animation: simple-scale 0.5s linear alternate;
+}
+
+.log-results__header {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.log-results__list {
+  list-style-type: none;
+  height: 220px;
+  background-color: #fff;
+  
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.log-results__item {
+  height: 30px;
+  margin: 10px;
+  padding: 0 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.log-results__item-text {
+  display: block;
+  white-space: nowrap; 
+  width: 120px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.log-results__item-close,
+.log-result__close {
+  color: #ff0101;
+  font-size: 40px;
+}
+
+.log-results__item-close:hover,
+.log-result__close:hover {
+  cursor: pointer;
 }
