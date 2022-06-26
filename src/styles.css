@@ -619,6 +619,10 @@ details label span {
   background-color: var(--color-white);
 }
 
+.paint-close {
+  cursor: pointer;
+}
+
 .paint-control__head {
   width: 200px;
   height: 100%;
