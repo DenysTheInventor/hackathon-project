@@ -4,9 +4,7 @@ import { ContextMenu } from './menu'
 import { BackgroundModule } from './modules/background.module'
 import { SoundModule } from './modules/sound.module'
 import { GeoLocation } from './modules/location.module'
-import { geometricFigurs } from './modules/index1'
-
-
+import { RandomFigures } from './modules/figures.module'
 
 const contextMenu = new ContextMenu('.menu')
 
@@ -14,8 +12,7 @@ const contextMenu = new ContextMenu('.menu')
 contextMenu.add(new BackgroundModule('backgrounde-module', 'Background'))
 contextMenu.add(new SoundModule('sound-module', 'Play sound'))
 contextMenu.add(new GeoLocation('location-module', 'Geolocation'))
-contextMenu.add(new geometricFigurs('random-figures-module', 'random figure'))
-
+contextMenu.add(new RandomFigures('figure-module', 'Random figure'))
 
 // init app
 contextMenu.init()

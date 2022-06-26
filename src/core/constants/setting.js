@@ -7,3 +7,5 @@ export const randomSounds = [
     'https://assets.mixkit.co/sfx/preview/mixkit-dog-barking-twice-1.mp3',
     'https://assets.mixkit.co/sfx/preview/mixkit-fast-rocket-whoosh-1714.mp3',
 ]
+
+export const workingArea = document.querySelector('.app-container')
