@@ -1,18 +1,20 @@
 import {Module} from '../core/module'
 import { returnDateNow } from '../utils'
+import { ModalModule } from './modal.module'
 
 export class LogModule extends Module {
+    #modal
     #results
 
     constructor(type, text) {
         super(type, text)
 
+        this.#modal = new ModalModule('modal-module', 'modal')
         this.#results = []
     }
 
     addToLocal() {
         localStorage.setItem('logs', JSON.stringify(this.#results))
-        console.log('here')
     }
 
     checkLocal() {
@@ -32,24 +34,6 @@ export class LogModule extends Module {
               `)  
         
         return item
-    }
-
-    createModal() {
-        const resultsModal = document.createElement('div')
-              resultsModal.classList.add('log-modal')
-              resultsModal.insertAdjacentHTML('afterbegin', `
-                <div class="log-results">
-                    <div class="log-results__header">
-                        <h2>Logs:</h2>
-                        <span class="log-result__close">&times;</span>    
-                    </div>
-                    <ul class="log-results__list">
-                        
-                    </ul>
-                </div>
-              `)
-        
-        document.body.append(resultsModal)
     }
 
     addItemsToModal() {
@@ -83,7 +67,7 @@ export class LogModule extends Module {
 
     toggleResultsWindow() {
         if (!document.querySelector('.log-modal')) {
-            this.createModal()
+            this.#modal.createModal('log', 'Logs')
             this.addItemsToModal()
             this.handleModalClick()
         }

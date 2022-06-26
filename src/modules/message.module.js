@@ -13,12 +13,12 @@ export class MessageModule extends Module {
         this.#messageBlock.textContent = text
     }
 
-    trigger(message) {
+    trigger(message, duration = 1000) {
         this.#setText(message)
         this.#messageBlock.classList.add('system-message__show')
 
         setTimeout(() => {
             this.#messageBlock.classList.remove('system-message__show')
-        }, 1000);
+        }, duration);
     }
 }

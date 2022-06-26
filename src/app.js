@@ -8,6 +8,7 @@ import { ClicksModule } from './modules/clicks.module'
 import { TimerModule } from './modules/timer.module'
 import { RandomFigures } from './modules/figures.module'
 import { LogModule } from './modules/log.module'
+import { UserModule } from './modules/user.module'
 
 const contextMenu = new ContextMenu('.menu')
 
@@ -19,6 +20,8 @@ contextMenu.add(new ClicksModule('count-module', 'Count clicks'))
 contextMenu.add(new TimerModule('timer-module', 'Set timer'))
 contextMenu.add(new RandomFigures('figure-module', 'Random figure'))
 contextMenu.add(new LogModule('log-module', 'Show logs'))
+contextMenu.add(new UserModule('user-module', 'Get user'))
+
 
 // init app
 contextMenu.init()
