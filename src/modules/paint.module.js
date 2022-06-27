@@ -40,6 +40,8 @@ export class PaintModule extends Module {
     getCanvas() {
         this.#canvas = document.querySelector('canvas')
         this.#context = this.#canvas.getContext('2d')
+        this.#context.canvas.width = document.documentElement.clientWidth;
+        this.#context.canvas.height = document.documentElement.clientHeight;
         this.#paintMarkerType = document.querySelector('.paint-marker__choose')
         this.#colorBlocksArea = document.querySelector('.paint-color__samples')
         this.#previewBlock = document.querySelector('.color-box')
